@@ -125,6 +125,12 @@ class Vector(tuple):
     def normalize(self):
         return self / self.length()
 
+    def deflect_x(self):
+        return Vector2(-self[0], self[1])
+
+    def deflect_y(self):
+        return Vector2(self[0], -self[1])
+
 
 def Vector2(x_or_pair, y=None):
     """
@@ -140,7 +146,12 @@ def Vector2(x_or_pair, y=None):
 
 DIRECTION = {
     'UP': Vector2(0, -1),
+    'RIGHT_UP': Vector2(1, -1).normalize(),
+    'RIGHT': Vector2(1, 0),
+    'RIGHT_DOWN': Vector2(1, 1).normalize(),
     'DOWN': Vector2(0, 1),
+    'LEFT_DOWN': Vector2(-1, 1).normalize(),
     'LEFT': Vector2(-1, 0),
-    'RIGHT': Vector2(1, 0)
+    'LEFT_UP': Vector2(-1, -1).normalize(),
+    'NONE': Vector2(0, 0)
 }
